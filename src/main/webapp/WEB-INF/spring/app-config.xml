@@ -11,6 +11,67 @@
        http://www.springframework.org/schema/mvc
        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
+
+	   <bean id="modifyOfficeOperations" class="es.unileon.service.ModifyOfficeManager">
+         <property name="listOfOffice">
+         	<list>
+         		<ref bean="Encina"/>
+         		<ref bean="Ladreda"/>
+         	</list>
+         </property>
+       </bean>
+       
+       
+       <bean id="employee1" class="es.unileon.domain.Employee">
+         <constructor-arg name="name" value="Luna"/>
+         <constructor-arg name="surname" value="Lovegood"/>
+         <constructor-arg name="address" value="Hogwarts"/>
+         <constructor-arg name="salary" value="1350"/>
+         <constructor-arg name="office" ref="Ladreda"/>
+         <constructor-arg name="dniEmployee" value="71517234E"/>
+       </bean>
+       
+      <bean id="employee2" class="es.unileon.domain.Employee">
+         <constructor-arg name="name" value="Harry"/>
+         <constructor-arg name="surname" value="Potter"/>
+         <constructor-arg name="address" value="Hogwarts"/>
+         <constructor-arg name="salary" value="2410"/>
+         <constructor-arg name="office" ref="Encina"/>
+         <constructor-arg name="dniEmployee" value="71463395A"/>
+       </bean>
+       
+
+       <bean id="Ladreda" class="es.unileon.domain.Office">
+        <constructor-arg name="name" value="Ladreda"/>
+        <constructor-arg name="street" value="Fernandez Ladreda"/>
+        <constructor-arg name="phone" value="987245198"/>
+        <constructor-arg name="zip" value="24401"/>
+        <constructor-arg name="id" value="1234"/>
+        <property name="listOfEmployees">
+            <list>
+                <ref bean="employee1"/>
+            </list>
+         </property> 
+       </bean>
+
+
+	   <bean id="Encina" class="es.unileon.domain.Office">
+	   	<constructor-arg name="name" value="Encina"/>
+        <constructor-arg name="street" value="Paseo San Antonio"/>
+        <constructor-arg name="phone" value="987124786"/>
+        <constructor-arg name="zip" value="24401"/>
+        <constructor-arg name="id" value="4567"/>
+        <property name="listOfEmployees">
+            <list>
+                <ref bean="employee2"/>
+            </list>
+        </property>
+       </bean>
+       
+       
+       <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+         <property name="basename" value="messages"/>
+       </bean>
        <!-- Scans the classpath of this application for @Components to deploy as beans -->
        <context:component-scan base-package="es.unileon.web" />
 

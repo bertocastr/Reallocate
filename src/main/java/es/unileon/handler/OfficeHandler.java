@@ -11,7 +11,7 @@ public class OfficeHandler implements Handler {
 
 	private String numberOffice;
 
-	public OfficeHandler(int number) throws MalformedHandlerException  {
+	public OfficeHandler(Integer number) throws MalformedHandlerException  {
 
 		if (number >= 0) {
 

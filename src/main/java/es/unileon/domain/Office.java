@@ -21,16 +21,19 @@ public class Office implements Serializable {
     private int zip, phone;
     private List<Employee> listOfEmployees;
     
+  
+	public void setListOfEmployees(List<Employee> listOfEmployees) {
+		this.listOfEmployees = listOfEmployees;
+	}
 
-	public Office (String name, String street, int phone, int zip, Handler id){
+	public Office (String name, String street, int phone, int zip, String id){
     	this.name = name;
     	this.street = street;
     	this.phone = phone;
     	this.zip = zip;
-    	this.id = id;
-    	listOfEmployees = new ArrayList<Employee>();
+    	this.id = new OfficeHandler(id);
+    	this.listOfEmployees = new ArrayList<Employee>();
     }
-  
 
     public String getName() {
 		return name;
@@ -78,21 +81,11 @@ public class Office implements Serializable {
 		this.phone = phone;
 	}
 
-	
-    public List<Employee> getListOfEmployees() {
-		return listOfEmployees;
-	}
-
-
-	public void setListOfEmployees(List<Employee> listOfEmployees) {
-		this.listOfEmployees = listOfEmployees;
-	}
-	
+		
     public Handler getId() {
 		return id;
 	}
 
-	
 	
 	public String toString() {
         StringBuffer buffer = new StringBuffer();
@@ -103,13 +96,41 @@ public class Office implements Serializable {
         return buffer.toString();
     }
 	
-	public void addEmployee(Employee employee ){
-		
+	public void add(Employee employee ){
 		if(! listOfEmployees.contains(employee))
-			listOfEmployees.add(employee);
-		
+			listOfEmployees.add(employee);		
 	}
 	
+	//TODO CREAR SEEKEMPLOYEE
+	public boolean seek(Employee employee){
+		boolean found = false;
+		int cont = 0;
+		while(cont<this.listOfEmployees.size() && !found){
+			if(this.listOfEmployees.get(cont).getIdEmployee().compareTo(employee.getIdEmployee())==0)
+				found=true;
+			cont++;
+		}
+		return found;
+	}
+	//TODO HACER REFACTOR A TODOOOOOOOOSSSSS LOS NOMBRES
+	public boolean removeEmployee(Employee employee){
+		int count=0;
+		boolean remove = false;
+		while(!remove &&count<this.listOfEmployees.size()){
+			if(this.listOfEmployees.get(count).getIdEmployee().compareTo(employee.getIdEmployee())==0){
+				this.listOfEmployees.remove(count);
+				remove=true;
+			}
+			count++;
+		}
+		return remove;
+	}
+	
+	public List<Employee> getListOfEmployees(){
+		//TODO devolver una copia
+		List<Employee> copyOfList = new ArrayList<Employee>(this.listOfEmployees);
+		return copyOfList;
+	}
 	
 
 }

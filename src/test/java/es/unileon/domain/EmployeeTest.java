@@ -35,13 +35,13 @@ public class EmployeeTest {
 		oneIdOffice = new OfficeHandler(1234);
 		anotherIdOffice = new OfficeHandler(9876);
 
-		oneOffice = new Office("Encina", "Paseo San Antonio", 987400001, 24401, oneIdOffice);
-		anotherOffice = new Office("Leon", "Plaza Espolol", 987402051, 24007, anotherIdOffice);
+		oneOffice = new Office("Encina", "Paseo San Antonio", 987400001, 24401, "1234");
+		anotherOffice = new Office("Leon", "Plaza Espolol", 987402051, 24007, "9876");
 
 		oneEmployee = new Employee("name", "surname", "address", salary,
-				oneOffice, dni);
+				oneOffice, "71463395A");
 		anotherEmployee = new Employee("name2", "surname2", "address2", salary,
-				anotherOffice, anotherDNI);
+				anotherOffice, "36167364W");
 	}
 
 	/**
@@ -49,7 +49,6 @@ public class EmployeeTest {
 	 */
 	@Test
 	public void testGetName() {
-		System.out.println("getName");
 		String expResult = "name";
 		String result = oneEmployee.getName();
 		assertEquals(expResult, result);
@@ -64,7 +63,6 @@ public class EmployeeTest {
 	 */
 	@Test
 	public void testSetName() {
-		System.out.println("setName");
 		String name = "nameChanged";
 		oneEmployee.setName(name);
 
@@ -76,7 +74,6 @@ public class EmployeeTest {
 	 */
 	@Test
 	public void testGetSurname() {
-		System.out.println("getSurname");
 		String expResult = "surname";
 		String result = oneEmployee.getSurname();
 		assertEquals(expResult, result);
@@ -91,7 +88,6 @@ public class EmployeeTest {
 	 */
 	@Test
 	public void testSetSurname() {
-		System.out.println("setSurname");
 		String surname = "surnameChanged";
 		oneEmployee.setSurname(surname);
 
@@ -103,7 +99,6 @@ public class EmployeeTest {
 	 */
 	@Test
 	public void testGetIdOffice() {
-		System.out.println("getIdOffice");
 		Office result = oneEmployee.getOffice();
 		assertEquals(oneOffice, result);
 
@@ -116,9 +111,7 @@ public class EmployeeTest {
 	 */
 	@Test
 	public void testSetIdOffice() throws MalformedHandlerException {
-		System.out.println("setIdOffice");
-		Handler idOffice = new OfficeHandler(5995);
-		Office office = new Office("Ladreda", "Calle Fernandez Ladreda", 989001454, 24005, idOffice);
+		Office office = new Office("Ladreda", "Calle Fernandez Ladreda", 989001454, 24005, "5995");
 		oneEmployee.setOffice(office);
 
 		Office result = oneEmployee.getOffice();
@@ -130,15 +123,14 @@ public class EmployeeTest {
 	 */
 	@Test
 	public void testGetIdEmployee() {
-		System.out.println("getIdEmployee");
-
 		Handler expResult = dni;
 		Handler result = oneEmployee.getIdEmployee();
-		assertEquals(expResult, result);
+
+		assertTrue(expResult.compareTo(result)==0);
 
 		expResult = anotherDNI;
 		result = anotherEmployee.getIdEmployee();
-		assertEquals(expResult, result);
+		assertTrue(expResult.compareTo(result)==0);
 	}
 
 	/**
@@ -146,7 +138,6 @@ public class EmployeeTest {
 	 */
 	@Test
 	public void testSetIdEmployee() throws MalformedHandlerException {
-		System.out.println("setIdEmployee");
 		Handler idEmployee = new DNIHandler("62457969C");
 		oneEmployee.setIdEmployee(idEmployee);
 
@@ -196,7 +187,7 @@ public class EmployeeTest {
 		oneEmployee.setIdEmployee(idEmployee);
 
 		Handler result = oneEmployee.getIdEmployee();
-		assertEquals(dni, result);
+		assertTrue(dni.compareTo(result)==0);
 	}
 
 	/**

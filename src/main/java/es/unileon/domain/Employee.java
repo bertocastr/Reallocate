@@ -1,5 +1,6 @@
 package es.unileon.domain;
 
+import es.unileon.handler.DNIHandler;
 import es.unileon.handler.Handler;
 
 /**
@@ -32,6 +33,7 @@ public class Employee {
 	 * Identifier of the employee
 	 */
 	private Handler idEmployee;
+	
 
 	/**
 	 * Create a new employee with all data
@@ -42,18 +44,19 @@ public class Employee {
 	 *            his/her surname
 	 * @param idOffice
 	 *            the office, can be null
-	 * @param idEmployee
+	 * @param dniEmployee
 	 *            the identifier of the employee
 	 */
 	public Employee(String name, String surname, String address, float salary,
-			Office idOffice, Handler idEmployee) {
+			Office office, String dniEmployee) {
 		// hacer comprobaciones
 		this.name = name;
 		this.surname = surname;
 		this.address = address;
 		this.salary = salary;
-		this.office = idOffice;
-		this.idEmployee = idEmployee;
+		this.office = office;
+		this.idEmployee = new DNIHandler(dniEmployee);
+		office.add(this);
 	}
 
 	/**
@@ -69,7 +72,7 @@ public class Employee {
 	 *            the identifier of the employee
 	 */
 	public Employee(String name, String surname, String address, float salary,
-			Handler idEmployee) {
+			String idEmployee) {
 		this(name, surname, address, salary, null, idEmployee);
 	}
 
@@ -205,5 +208,26 @@ public class Employee {
 	public boolean isAdmin() {
 		return false;
 	}
+	
+	/**
+	 * Reallocate the employee into the new office and remove the previous.
+	 * 
+	 * @param newOffice office to reallocate
+	 */
+	public boolean reallocateEmployee(Office newOffice){
+		if(this.getOffice().seek(this)){
+			if(this.getOffice().removeEmployee(this)){
+				this.setOffice(newOffice);
+				newOffice.add(this);
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	/**
+	 * Get all the employees of the office.
+	 */
+	
 
 }
