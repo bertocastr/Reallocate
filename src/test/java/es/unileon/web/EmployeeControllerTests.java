@@ -21,48 +21,9 @@ import es.unileon.web.EmployeeController;
 
 public class EmployeeControllerTests {
 
-	Employee Juan;
-	Employee Pepe;
-	Handler dni;
-	Handler anotherDNI;
-	Handler EncinaId;
-	Handler LeonId;
-	Handler CalleId;
-	Office Encina;
-	Office Leon;
-	Bank bank;
-	float salary;
 
-	@Before
-	public void setUp() throws MalformedHandlerException {
-		salary = 5000;
-
-		bank = new Bank();
-
-		dni = new DNIHandler("71463395A");
-		anotherDNI = new DNIHandler("36167364W");
-
-		EncinaId = new OfficeHandler(1234);
-		LeonId = new OfficeHandler(9876);
-		CalleId = new OfficeHandler(4560);
-
-		Encina = new Office("Encina", "Paseo San Antonio", 987400001, 24401,
-				"1234");
-		Leon = new Office("Leon", "Plaza Espolon", 987402051, 24007, "9876");
-
-		Juan = new Employee("name", "surname", "address", salary, Encina, "71463395A");
-		Pepe = new Employee("name2", "surname2", "address2", salary, Leon,
-				"36167364W");
-
-		Encina.add(Juan);
-
-		Leon.add(Pepe);
-
-		bank.addOffice(Encina);
-		bank.addOffice(Leon);
-	}
 	
-    @Test (expected=NullPointerException.class)
+    @Test 
     public void testHandleRequestView() throws Exception{		
         EmployeeController controller = new EmployeeController();
         controller.setEmployeeManager(new ModifyOfficeManager());
