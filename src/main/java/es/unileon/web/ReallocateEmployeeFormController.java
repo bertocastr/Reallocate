@@ -58,6 +58,8 @@ public class ReallocateEmployeeFormController {
     	ChangeOffice changeOffice = new ChangeOffice();
         String idOffice = request.getParameter("id2");
         String dniEmployee = request.getParameter("id1");
+        System.out.println(request.getParameter("id1"));
+        System.out.println(request.getParameter("id2"));
 
         changeOffice.setIdOffice(idOffice);
         changeOffice.setDniEmployee(dniEmployee);
@@ -73,3 +75,4 @@ public class ReallocateEmployeeFormController {
     }
 
 }
+
