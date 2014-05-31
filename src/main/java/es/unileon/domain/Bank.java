@@ -3,17 +3,30 @@ package es.unileon.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+
 import es.unileon.handler.Handler;
 
+@Entity
+@Table(name = "Bank")
 public class Bank {
+	private static final long serialVersionUID = 1L;
 
 	private List<Office> listOfOffice;
 	private List<Employee> listAllEmployees;
 	
 	private Handler officeId;
-	private String name;
 	
-	public Bank(){
+	@Id
+    @Column(name = "idBank")
+	private String idBank;
+	
+	public Bank(String idBank){
+		this.idBank = idBank;
 		this.listOfOffice = new ArrayList<Office>();
 	}
 	

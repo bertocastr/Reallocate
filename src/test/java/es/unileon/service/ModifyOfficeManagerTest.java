@@ -36,7 +36,7 @@ public class ModifyOfficeManagerTest {
 		operations = new ModifyOfficeManager();
 		salary = 5000;
 
-		bank = new Bank();
+		bank = new Bank("0000");
 
 		dni = new DNIHandler("71463395A");
 		anotherDNI = new DNIHandler("36167364W");

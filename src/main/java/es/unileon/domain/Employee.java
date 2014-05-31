@@ -3,11 +3,20 @@ package es.unileon.domain;
 import es.unileon.handler.DNIHandler;
 import es.unileon.handler.Handler;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  * 
  * @author dorian
  */
+@Entity
+@Table(name="employee") 
 public class Employee {
+
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * Name of the employee
@@ -32,7 +41,12 @@ public class Employee {
 	/**
 	 * Identifier of the employee
 	 */
+	@Id
+    @Column(name = "idemployee")
+	private String idemployee;
 	private Handler idEmployee;
+	
+	
 	
 
 	/**
@@ -74,6 +88,14 @@ public class Employee {
 	public Employee(String name, String surname, String address, float salary,
 			String idEmployee) {
 		this(name, surname, address, salary, null, idEmployee);
+	}
+
+	public String getIdemployee() {
+		return idemployee;
+	}
+
+	public void setIdemployee(String idemployee) {
+		this.idemployee = idemployee;
 	}
 
 	/**

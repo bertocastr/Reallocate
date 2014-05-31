@@ -2,18 +2,27 @@ package es.unileon.domain;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 
 import es.unileon.handler.*;
 import es.unileon.domain.Employee;
 
+@Entity
+@Table(name="office")
 public class Office implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
-
+	@Id
+    @Column(name = "idOffice")
+	
+	private String idOffice;
+	
 	private final Handler id;
 
 
@@ -35,7 +44,15 @@ public class Office implements Serializable {
     	this.listOfEmployees = new ArrayList<Employee>();
     }
 
-    public String getName() {
+    public String getIdOffice() {
+		return idOffice;
+	}
+
+	public void setIdOffice(String idOffice) {
+		this.idOffice = idOffice;
+	}
+
+	public String getName() {
 		return name;
 	}
 

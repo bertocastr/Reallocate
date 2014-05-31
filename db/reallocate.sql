@@ -1,33 +1,38 @@
-CREATE DATABASE reallocate
+CREATE DATABASE reallocate;
 
-GRANT ALL ON reallocate.* TO reallocate@'%' IDIENTIFIED BY 'bertocastr'
-GRANT ALL ON reallocate.* TO reallocate@localhost IDIENTIFIED BY 'bertocastr'
+GRANT ALL ON reallocateuser.* TO reallocateuser@'%' IDIENTIFIED BY 'preallocateuser';
+GRANT ALL ON reallocateuser.* TO reallocateuser@localhost IDIENTIFIED BY 'preallocateuser';
 
 USE reallocate;
 
-CREATE TABLE `Employee` (
-	`name` TEXT NOT NULL,
-	`surname` TEXT NOT NULL,
-	`address` TEXT NOT NULL,
-	`salary` FLOAT(2) NOT NULL,
-	`idoffice` TEXT NOT NULL,
-	`idemployee` TEXT NOT NULL,
-	PRIMARY KEY(`idemployee`)
+CREATE TABLE `Bank` (
+	`idBank` INTEGER NOT NULL,
+	PRIMARY KEY(`idBank`)
 ) ENGINE=INNODB;
+
 CREATE TABLE `Office` (
-	`employee_idemployee` TEXT NOT NULL,
-	KEY(`employee_idemployee`),
-	`name` TEXT NOT NULL,
-	`street` TEXT NOT NULL,
+	`name` varchar(20) NOT NULL,
+	`street` varchar(30) NOT NULL,
 	`phone` INTEGER NOT NULL,
 	`zip` INTEGER NOT NULL,
-	`id` TEXT NOT NULL,
-	PRIMARY KEY(`employee_idemployee`,`id`)
+	`bank_idbank` INTEGER NOT NULL,
+	KEY (bank_idbank),
+	`idOffice` varchar(20) NOT NULL,
+	PRIMARY KEY(`idOffice`)
 ) ENGINE=INNODB;
-CREATE TABLE `Bank` (
-	`id` INTEGER NOT NULL,
-	PRIMARY KEY(`id`)
+
+CREATE TABLE `Employee` (
+	`name` varchar(20) NOT NULL,
+	`surname` varchar(20) NOT NULL,
+	`address` varchar(30) NOT NULL,
+	`salary` FLOAT(2) NOT NULL,
+	`office_idoffice` varchar(20) NOT NULL,
+	KEY (office_idoffice),
+	`id_employee` varchar(20) NOT NULL,
+	PRIMARY KEY(`id_employee`)
 ) ENGINE=INNODB;
 
 
-ALTER TABLE `Office` ADD CONSTRAINT `office_employee_employee_idemployee` FOREIGN KEY (`employee_idemployee`) REFERENCES `Employee`(`idemployee`) ON DELETE NO ACTION ON UPDATE CASCADE;
+
+ALTER TABLE `Employee` ADD CONSTRAINT `office_employee_employee_idemployee` FOREIGN KEY (`office_idoffice`) REFERENCES `Office`(`idOffice`) ON DELETE NO ACTION ON UPDATE CASCADE;
+ALTER TABLE `Office` ADD CONSTRAINT `office_bank_bank_idoffice` FOREIGN KEY (`bank_idbank`) REFERENCES `Bank`(`idBank`) ON DELETE NO ACTION ON UPDATE CASCADE;
