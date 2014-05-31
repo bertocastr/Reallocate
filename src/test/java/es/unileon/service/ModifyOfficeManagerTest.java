@@ -49,10 +49,10 @@ public class ModifyOfficeManagerTest {
 				"1234");
 		Leon = new Office("Leon", "Plaza Espolon", 987402051, 24007, "9876");
 
-		Juan = new Employee("name", "surname", "address", salary, Encina, "71463395A");
-		Pepe = new Employee("name2", "surname2", "address2", salary, Leon,
+		Juan = new Employee("name", "surname", "address", salary, Encina.getIdOffice(), "71463395A");
+		Pepe = new Employee("name2", "surname2", "address2", salary, Leon.getIdOffice(),
 				"36167364W");
-		Maria = new Employee("maria", "castro", "Calle bosco", salary, Encina, "10059705B");
+		Maria = new Employee("maria", "castro", "Calle bosco", salary, Encina.getIdOffice(), "10059705B");
 
 		Encina.add(Juan);
 		Encina.add(Maria);
@@ -82,15 +82,15 @@ public class ModifyOfficeManagerTest {
 
 	@Test
 	public void testReallocate() {
-		assertTrue(Pepe.getOffice().getId().compareTo(LeonId)==0);
+		assertTrue(Pepe.getIdOffice().compareTo(LeonId.toString())==0);
 		assertTrue(Leon.seek(Pepe));
 		
 		Pepe.reallocateEmployee(Encina);
 		
-		assertTrue(Pepe.getOffice().getId().compareTo(EncinaId)==0);
+		assertTrue(Pepe.getIdOffice().compareTo(EncinaId.toString())==0);
 		assertTrue(Encina.seek(Pepe));
 		
-		assertFalse(Pepe.getOffice().getId().compareTo(LeonId)==0);
+		assertFalse(Pepe.getIdOffice().compareTo(LeonId.toString())==0);
 		assertFalse(Leon.seek(Pepe));
 	}
 

@@ -41,8 +41,8 @@ public class BankTest {
 				"1234");
 		Leon = new Office("Leon", "Plaza Espolon", 987402051, 24007, "9876");
 
-		Juan = new Employee("name", "surname", "address", salary, Encina, "71463395A");
-		Pepe = new Employee("name2", "surname2", "address2", salary, Leon,
+		Juan = new Employee("name", "surname", "address", salary, Encina.getIdOffice(), "71463395A");
+		Pepe = new Employee("name2", "surname2", "address2", salary, Leon.getIdOffice(),
 				"36167364W");
 
 		Encina.add(Juan);

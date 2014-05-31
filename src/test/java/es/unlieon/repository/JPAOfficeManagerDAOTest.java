@@ -23,29 +23,34 @@ public class JPAOfficeManagerDAOTest {
 	@Before
 	public void setUp() throws Exception {
 		context = new ClassPathXmlApplicationContext("classpath:test-context.xml");
-		officeManagerDao = (OfficeManagerDAO) context.getBean("officeManagerDao");
+		officeManagerDao = (OfficeManagerDAO) context.getBean("officeManagerDAO");
 	}
 
 	@Test
-	public void testReallocate() {
-		Handler dniEmployee = new DNIHandler("71517234E");
-		Handler idNewOffice = new OfficeHandler("1234");
+	public void testSaveEmployee() {
 		List<Employee> employees = officeManagerDao.getAllEmployees();
-		assertEquals(employees.get(0).getIdemployee(), 0);
-		assertEquals(employees.get(0).getOffice().getIdOffice(), 0);
-		officeManagerDao.reallocate(dniEmployee, idNewOffice);
-		assertEquals(employees.get(0).getIdemployee(), 0);
-		assertEquals(employees.get(0).getOffice().getIdOffice(), 0);
+		Employee e = employees.get(0);
+		e.setIdOffice("1234");
+		officeManagerDao.saveEmployee(e);
+		
+		List<Employee> updateEmployees = officeManagerDao.getAllEmployees();
+		Employee updateE = updateEmployees.get(0);
+		assertEquals(updateE.getIdOffice(), "1234");
+		
+		updateE.setIdOffice("1111");
+		officeManagerDao.saveEmployee(e);
 	}
 
 	@Test
 	public void testGetAllEmployees() {
-		fail("Not yet implemented");
+		List<Employee> employees = officeManagerDao.getAllEmployees();
+		assertEquals(employees.size(), 3, 0);
 	}
 
 	@Test
 	public void testGetOffices() {
-		fail("Not yet implemented");
+		List<Office> offices = officeManagerDao.getOffices();
+		assertEquals(offices.size(), 2, 0);	
 	}
 
 }

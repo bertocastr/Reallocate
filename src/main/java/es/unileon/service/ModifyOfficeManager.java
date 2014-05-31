@@ -59,7 +59,7 @@ public class ModifyOfficeManager implements OfficeManager {
 		Office office = null;
 		Employee employee = null;
 		while(!found && count<this.getAllEmployees().size()){
-			if(this.getAllEmployees().get(count).getIdEmployee().compareTo(dniEmployee)==0){
+			if(this.getAllEmployees().get(count).getIdemployee().compareTo(dniEmployee.toString())==0){
 				employee = this.getAllEmployees().get(count);
 				found=true;
 			}
@@ -69,7 +69,7 @@ public class ModifyOfficeManager implements OfficeManager {
 		count=0;
 		found=false;
 		while(!found && count<this.listOfOffice.size()){
-			if(this.listOfOffice.get(count).getId().compareTo(idNewOffice)==0){
+			if(this.listOfOffice.get(count).getIdOffice().compareTo(idNewOffice.toString())==0){
 				found=true;
 				office = this.listOfOffice.get(count);
 			}

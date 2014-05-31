@@ -1,7 +1,5 @@
 CREATE DATABASE reallocate;
 
-GRANT ALL ON reallocateuser.* TO reallocateuser@'%' IDIENTIFIED BY 'preallocateuser';
-GRANT ALL ON reallocateuser.* TO reallocateuser@localhost IDIENTIFIED BY 'preallocateuser';
 
 USE reallocate;
 
@@ -28,8 +26,8 @@ CREATE TABLE `Employee` (
 	`salary` FLOAT(2) NOT NULL,
 	`office_idoffice` varchar(20) NOT NULL,
 	KEY (office_idoffice),
-	`id_employee` varchar(20) NOT NULL,
-	PRIMARY KEY(`id_employee`)
+	`idemployee` varchar(20) NOT NULL,
+	PRIMARY KEY(`idemployee`)
 ) ENGINE=INNODB;
 
 

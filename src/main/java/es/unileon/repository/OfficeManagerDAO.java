@@ -8,7 +8,7 @@ import es.unileon.handler.Handler;
 
 public interface OfficeManagerDAO {
 
-    public void reallocate(Handler dniEmployee, Handler idNewOffice);
+    public void saveEmployee(Employee employee);
     
     public List<Employee> getAllEmployees();
     

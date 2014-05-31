@@ -9,7 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
 import es.unileon.handler.*;
 import es.unileon.domain.Employee;
 
@@ -23,25 +22,29 @@ public class Office implements Serializable {
 	
 	private String idOffice;
 	
-	private final Handler id;
 
 
 	private String name, street;
     private int zip, phone;
-    private List<Employee> listOfEmployees;
+//    private List<Employee> listOfEmployees;
     
   
 	public void setListOfEmployees(List<Employee> listOfEmployees) {
-		this.listOfEmployees = listOfEmployees;
+//		this.listOfEmployees = listOfEmployees;
+	}
+	
+	public Office(){
+		
 	}
 
-	public Office (String name, String street, int phone, int zip, String id){
+	public Office (String name, String street, int phone, int zip, String idOffice){
     	this.name = name;
     	this.street = street;
     	this.phone = phone;
     	this.zip = zip;
-    	this.id = new OfficeHandler(id);
-    	this.listOfEmployees = new ArrayList<Employee>();
+    	Handler id = new OfficeHandler(idOffice);
+    	this.idOffice = idOffice;
+//    	this.listOfEmployees = new ArrayList<Employee>();
     }
 
     public String getIdOffice() {
@@ -93,16 +96,9 @@ public class Office implements Serializable {
 	}
 
 
-
 	public void setPhone(int phone) {
 		this.phone = phone;
 	}
-
-		
-    public Handler getId() {
-		return id;
-	}
-
 	
 	public String toString() {
         StringBuffer buffer = new StringBuffer();
@@ -114,38 +110,40 @@ public class Office implements Serializable {
     }
 	
 	public void add(Employee employee ){
-		if(! listOfEmployees.contains(employee))
-			listOfEmployees.add(employee);		
+//		if(! listOfEmployees.contains(employee))
+//			listOfEmployees.add(employee);		
 	}
 	
 	//TODO CREAR SEEKEMPLOYEE
 	public boolean seek(Employee employee){
-		boolean found = false;
-		int cont = 0;
-		while(cont<this.listOfEmployees.size() && !found){
-			if(this.listOfEmployees.get(cont).getIdEmployee().compareTo(employee.getIdEmployee())==0)
-				found=true;
-			cont++;
-		}
-		return found;
+//		boolean found = false;
+//		int cont = 0;
+//		while(cont<this.listOfEmployees.size() && !found){
+//			if(this.listOfEmployees.get(cont).getIdemployee().compareTo(employee.getIdemployee())==0)
+//				found=true;
+//			cont++;
+//		}
+//		return found;
+		return false;
 	}
 	//TODO HACER REFACTOR A TODOOOOOOOOSSSSS LOS NOMBRES
 	public boolean removeEmployee(Employee employee){
 		int count=0;
 		boolean remove = false;
-		while(!remove &&count<this.listOfEmployees.size()){
-			if(this.listOfEmployees.get(count).getIdEmployee().compareTo(employee.getIdEmployee())==0){
-				this.listOfEmployees.remove(count);
-				remove=true;
-			}
-			count++;
-		}
+//		while(!remove &&count<this.listOfEmployees.size()){
+//			if(this.listOfEmployees.get(count).getIdemployee().compareTo(employee.getIdemployee())==0){
+//				this.listOfEmployees.remove(count);
+//				remove=true;
+//			}
+//			count++;
+//		}
 		return remove;
 	}
 	
 	public List<Employee> getListOfEmployees(){
 		//TODO devolver una copia
-		List<Employee> copyOfList = new ArrayList<Employee>(this.listOfEmployees);
+		List<Employee> copyOfList = null;
+//		= new ArrayList<Employee>(this.listOfEmployees);
 		return copyOfList;
 	}
 	

@@ -37,17 +37,19 @@ public class Employee {
 	/**
 	 * Office which belong
 	 */
-	private Office office;
+	private String office_idoffice;
 	/**
 	 * Identifier of the employee
 	 */
 	@Id
     @Column(name = "idemployee")
 	private String idemployee;
-	private Handler idEmployee;
+	//private Handler idEmployee;
 	
 	
-	
+	public Employee(){
+		
+	}
 
 	/**
 	 * Create a new employee with all data
@@ -62,15 +64,17 @@ public class Employee {
 	 *            the identifier of the employee
 	 */
 	public Employee(String name, String surname, String address, float salary,
-			Office office, String dniEmployee) {
+			String idOffice, String dniEmployee) {
 		// hacer comprobaciones
 		this.name = name;
 		this.surname = surname;
 		this.address = address;
 		this.salary = salary;
-		this.office = office;
-		this.idEmployee = new DNIHandler(dniEmployee);
-		office.add(this);
+		this.office_idoffice = idOffice;
+		Handler idEmployee = new DNIHandler(dniEmployee);
+		this.idemployee = dniEmployee;
+//		office.add(this);
+		//TODO HACER ADD PARA METER EN LA BASE DE DATOS
 	}
 
 	/**
@@ -188,8 +192,8 @@ public class Employee {
 	 * 
 	 * @return the office or null if not exists
 	 */
-	public Office getOffice() {
-		return office;
+	public String getIdOffice() {
+		return office_idoffice;
 	}
 
 	/**
@@ -197,30 +201,30 @@ public class Employee {
 	 * 
 	 * @param idOffice
 	 */
-	public void setOffice(Office idOffice) {
-		this.office = idOffice;
+	public void setIdOffice(String idOffice) {
+		this.office_idoffice = idOffice;
 	}
 
-	/**
-	 * Get the identifier of the employee
-	 * 
-	 * @return a handler that identify the employee
-	 */
-	public Handler getIdEmployee() {
-		return idEmployee;
-	}
-
-	/**
-	 * Set the identifier of the employee
-	 * 
-	 * @param idEmployee
-	 *            the new identifier, can't be null
-	 */
-	public void setIdEmployee(Handler idEmployee) {
-		if (idEmployee != null) {
-			this.idEmployee = idEmployee;
-		}
-	}
+//	/**
+//	 * Get the identifier of the employee
+//	 * 
+//	 * @return a handler that identify the employee
+//	 */
+//	public Handler getIdEmployee() {
+//		return idEmployee;
+//	}
+//
+//	/**
+//	 * Set the identifier of the employee
+//	 * 
+//	 * @param idEmployee
+//	 *            the new identifier, can't be null
+//	 */
+//	public void setIdEmployee(Handler idEmployee) {
+//		if (idEmployee != null) {
+//			this.idEmployee = idEmployee;
+//		}
+//	}
 
 	/**
 	 * Tell if this employee is an admin
@@ -237,13 +241,13 @@ public class Employee {
 	 * @param newOffice office to reallocate
 	 */
 	public boolean reallocateEmployee(Office newOffice){
-		if(this.getOffice().seek(this)){
-			if(this.getOffice().removeEmployee(this)){
-				this.setOffice(newOffice);
-				newOffice.add(this);
-				return true;
-			}
-		}
+//		if(this.getOffice().seek(this)){
+//			if(this.getOffice().removeEmployee(this)){
+//				this.setOffice(newOffice);
+//				newOffice.add(this);
+//				return true;
+//			}
+//		}
 		return false;
 	}
 	
