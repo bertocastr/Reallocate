@@ -6,6 +6,7 @@ import java.util.List;
 import es.unileon.domain.Employee;
 import es.unileon.domain.Office;
 import es.unileon.handler.Handler;
+import es.unileon.repository.OfficeManagerDAO;
 
 public interface OfficeManager extends Serializable {
 
@@ -14,5 +15,9 @@ public interface OfficeManager extends Serializable {
     public List<Employee> getAllEmployees();
     
     public List<Office> getOffices();
+    
+    public void setOfficeManagerDAO(OfficeManagerDAO officeManagerDAO);
+    
+    public OfficeManagerDAO getOfficeManagerDAO();
 
 }

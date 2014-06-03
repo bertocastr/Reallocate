@@ -1,5 +1,9 @@
 CREATE DATABASE reallocate;
 
+GRANT ALL ON reallocate.* TO 'springappuser'@'%' IDENTIFIED BY 'pspringappuser';
+GRANT ALL ON reallocate.* TO 'springappuser'@'localhost' IDENTIFIED BY 'pspringappuser';
+
+FLUSH PRIVILEGES;
 
 USE reallocate;
 

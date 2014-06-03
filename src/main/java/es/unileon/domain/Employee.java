@@ -44,7 +44,6 @@ public class Employee {
 	@Id
     @Column(name = "idemployee")
 	private String idemployee;
-	//private Handler idEmployee;
 	
 	
 	public Employee(){
@@ -65,7 +64,6 @@ public class Employee {
 	 */
 	public Employee(String name, String surname, String address, float salary,
 			String idOffice, String dniEmployee) {
-		// hacer comprobaciones
 		this.name = name;
 		this.surname = surname;
 		this.address = address;
@@ -73,8 +71,6 @@ public class Employee {
 		this.office_idoffice = idOffice;
 		Handler idEmployee = new DNIHandler(dniEmployee);
 		this.idemployee = dniEmployee;
-//		office.add(this);
-		//TODO HACER ADD PARA METER EN LA BASE DE DATOS
 	}
 
 	/**
@@ -205,49 +201,12 @@ public class Employee {
 		this.office_idoffice = idOffice;
 	}
 
-//	/**
-//	 * Get the identifier of the employee
-//	 * 
-//	 * @return a handler that identify the employee
-//	 */
-//	public Handler getIdEmployee() {
-//		return idEmployee;
-//	}
-//
-//	/**
-//	 * Set the identifier of the employee
-//	 * 
-//	 * @param idEmployee
-//	 *            the new identifier, can't be null
-//	 */
-//	public void setIdEmployee(Handler idEmployee) {
-//		if (idEmployee != null) {
-//			this.idEmployee = idEmployee;
-//		}
-//	}
-
 	/**
 	 * Tell if this employee is an admin
 	 * 
 	 * @return true if is an admin
 	 */
 	public boolean isAdmin() {
-		return false;
-	}
-	
-	/**
-	 * Reallocate the employee into the new office and remove the previous.
-	 * 
-	 * @param newOffice office to reallocate
-	 */
-	public boolean reallocateEmployee(Office newOffice){
-//		if(this.getOffice().seek(this)){
-//			if(this.getOffice().removeEmployee(this)){
-//				this.setOffice(newOffice);
-//				newOffice.add(this);
-//				return true;
-//			}
-//		}
 		return false;
 	}
 	

@@ -16,9 +16,8 @@
 	<c:forEach items="${model.allEmployees}" var="allEmplo">
 		<br>
 		<a
-			href="<c:url value="reallocateEmployee.htm?id1=${allEmplo.idEmployee}&id2=${allEmplo.office.id}"/>">
-			Employee:  ${allEmplo.idEmployee}  ${allEmplo.name}   -->   Office: 
-			${allEmplo.office.name}  ${allEmplo.office.id}</a>
+			href="<c:url value="reallocateEmployee.htm?id1=${allEmplo.idemployee}&id2=${allEmplo.idOffice}"/>">
+			Employee:  ${allEmplo.idemployee}  ${allEmplo.name}   -->   Office:	${allEmplo.idOffice}</a>
 		<br>
 		<br>
 	</c:forEach>

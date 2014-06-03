@@ -26,12 +26,6 @@ public class Office implements Serializable {
 
 	private String name, street;
     private int zip, phone;
-//    private List<Employee> listOfEmployees;
-    
-  
-	public void setListOfEmployees(List<Employee> listOfEmployees) {
-//		this.listOfEmployees = listOfEmployees;
-	}
 	
 	public Office(){
 		
@@ -44,7 +38,6 @@ public class Office implements Serializable {
     	this.zip = zip;
     	Handler id = new OfficeHandler(idOffice);
     	this.idOffice = idOffice;
-//    	this.listOfEmployees = new ArrayList<Employee>();
     }
 
     public String getIdOffice() {
@@ -108,44 +101,5 @@ public class Office implements Serializable {
         buffer.append("Phone" + phone);
         return buffer.toString();
     }
-	
-	public void add(Employee employee ){
-//		if(! listOfEmployees.contains(employee))
-//			listOfEmployees.add(employee);		
-	}
-	
-	//TODO CREAR SEEKEMPLOYEE
-	public boolean seek(Employee employee){
-//		boolean found = false;
-//		int cont = 0;
-//		while(cont<this.listOfEmployees.size() && !found){
-//			if(this.listOfEmployees.get(cont).getIdemployee().compareTo(employee.getIdemployee())==0)
-//				found=true;
-//			cont++;
-//		}
-//		return found;
-		return false;
-	}
-	//TODO HACER REFACTOR A TODOOOOOOOOSSSSS LOS NOMBRES
-	public boolean removeEmployee(Employee employee){
-		int count=0;
-		boolean remove = false;
-//		while(!remove &&count<this.listOfEmployees.size()){
-//			if(this.listOfEmployees.get(count).getIdemployee().compareTo(employee.getIdemployee())==0){
-//				this.listOfEmployees.remove(count);
-//				remove=true;
-//			}
-//			count++;
-//		}
-		return remove;
-	}
-	
-	public List<Employee> getListOfEmployees(){
-		//TODO devolver una copia
-		List<Employee> copyOfList = null;
-//		= new ArrayList<Employee>(this.listOfEmployees);
-		return copyOfList;
-	}
-	
 
 }

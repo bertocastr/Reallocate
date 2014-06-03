@@ -1,18 +1,16 @@
 package es.unileon.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import es.unileon.domain.Employee;
 import es.unileon.domain.Office;
-import es.unileon.domain.Bank;
-import es.unileon.handler.DNIHandler;
-import es.unileon.handler.Handler;
-import es.unileon.handler.OfficeHandler;
 import es.unileon.repository.OfficeManagerDAO;
 
+
+@Component
 public class ModifyOfficeManager implements OfficeManager {
 
 	private static final long serialVersionUID = 1L;

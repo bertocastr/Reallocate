@@ -14,6 +14,8 @@ import es.unileon.domain.Office;
 import es.unileon.handler.DNIHandler;
 import es.unileon.handler.Handler;
 import es.unileon.handler.OfficeHandler;
+import es.unileon.repository.OfficeManagerDAO;
+import es.unlieon.repository.InMemoryOfficeManagerDAO;
 
 public class ModifyOfficeManagerTest {
 	
@@ -30,9 +32,14 @@ public class ModifyOfficeManagerTest {
 	Office Leon;
 	Bank bank;
 	float salary;
+	private List<Employee> employees;
+	private List<Office> offices;
 	
 	@Before
 	public void setUp() throws Exception {
+		employees = new ArrayList<Employee>();
+		offices = new ArrayList<Office>();
+		
 		operations = new ModifyOfficeManager();
 		salary = 5000;
 
@@ -53,18 +60,16 @@ public class ModifyOfficeManagerTest {
 		Pepe = new Employee("name2", "surname2", "address2", salary, Leon.getIdOffice(),
 				"36167364W");
 		Maria = new Employee("maria", "castro", "Calle bosco", salary, Encina.getIdOffice(), "10059705B");
-
-		Encina.add(Juan);
-		Encina.add(Maria);
 		
-		Leon.add(Pepe);
-
-		bank.addOffice(Encina);
-		bank.addOffice(Leon);
+		offices.add(Encina);
+		offices.add(Leon);
 		
-		bank.getAllEmployees();
+		employees.add(Pepe);
+		employees.add(Juan);
+		employees.add(Maria);
 		
-		operations.setListOfOffice(bank.getListOfOffice());
+		OfficeManagerDAO officeManagerDao = new InMemoryOfficeManagerDAO(employees, offices);
+		operations.setOfficeManagerDAO(officeManagerDao);
 	}
 
 	@Test
@@ -74,24 +79,20 @@ public class ModifyOfficeManagerTest {
 
 	@Test
 	public void testGetOffices() {
-		List<Office> listOfOffice = new ArrayList<Office>();
-		listOfOffice.add(Encina);
-		operations.setListOfOffice(listOfOffice);
-		assertEquals(operations.getOffices().size(), 1);
+		assertEquals(operations.getOffices().size(), 2);
 	}
 
 	@Test
 	public void testReallocate() {
-		assertTrue(Pepe.getIdOffice().compareTo(LeonId.toString())==0);
-		assertTrue(Leon.seek(Pepe));
-		
-		Pepe.reallocateEmployee(Encina);
-		
-		assertTrue(Pepe.getIdOffice().compareTo(EncinaId.toString())==0);
-		assertTrue(Encina.seek(Pepe));
-		
-		assertFalse(Pepe.getIdOffice().compareTo(LeonId.toString())==0);
-		assertFalse(Leon.seek(Pepe));
+		String expectedIdOffice="";
+		operations.reallocate(Pepe.getIdemployee(), Encina.getIdOffice());
+		List<Employee> employee = operations.getAllEmployees();
+		for(int i = 0; i<employee.size(); i++){
+			if(employee.get(i).getIdemployee().compareTo(Pepe.getIdemployee())==0){
+				expectedIdOffice = employee.get(i).getIdOffice();
+			}
+		}
+		assertTrue(expectedIdOffice.compareTo(Encina.getIdOffice())==0);
 	}
 
 }

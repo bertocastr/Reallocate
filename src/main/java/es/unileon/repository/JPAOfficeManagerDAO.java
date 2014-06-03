@@ -45,6 +45,7 @@ public class JPAOfficeManagerDAO implements OfficeManagerDAO {
 
 	@Transactional(readOnly = true)
 	public Employee getEmployee(String dniEmployee) {
+		dniEmployee = dniEmployee.trim();
 		return (Employee) em.createQuery("select e from Employee e where e.idemployee='"+dniEmployee+"'").getResultList().get(0);
 	}
 

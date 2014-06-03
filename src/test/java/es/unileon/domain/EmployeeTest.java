@@ -99,25 +99,11 @@ public class EmployeeTest {
 	 */
 	@Test
 	public void testGetIdOffice() {
-//		Office result = oneEmployee.getOffice();
-//		assertEquals(oneOffice, result);
-//
-//		result = anotherEmployee.getOffice();
-//		assertEquals(anotherOffice, result);
+		assertEquals("9876", this.anotherEmployee.getIdOffice());
+		this.anotherEmployee.setIdOffice("0123");
+		assertEquals("0123", this.anotherEmployee.getIdOffice());
 	}
-
-	/**
-	 * Test of setIdOffice method, of class Employee.
-	 */
-	@Test
-	public void testSetIdOffice() throws MalformedHandlerException {
-//		Office office = new Office("Ladreda", "Calle Fernandez Ladreda", 989001454, 24005, "5995");
-//		oneEmployee.setOffice(office);
-//
-//		Office result = oneEmployee.getOffice();
-//		assertEquals(office, result);
-	}
-
+	
 	/**
 	 * Test of getIdEmployee method, of class Employee.
 	 */
@@ -138,11 +124,12 @@ public class EmployeeTest {
 	 */
 	@Test
 	public void testSetIdEmployee() throws MalformedHandlerException {
-		Handler idEmployee = new DNIHandler("62457969C");
-		oneEmployee.setIdemployee(idEmployee.toString());
+		Handler idEmployee = new DNIHandler("71517234E");
+		oneEmployee.setIdemployee(idEmployee.toString().trim());
 
 		Handler result = new DNIHandler(oneEmployee.getIdemployee());
-		assertEquals(idEmployee, result);
+		
+		assertEquals(idEmployee.toString(), result.toString());
 	}
 
 	/**
@@ -177,18 +164,6 @@ public class EmployeeTest {
 		assertEquals("surname", oneEmployee.getSurname());
 	}
 
-	/**
-	 * Test to set an invalid (null) idEmployee, the original id must not be
-	 * changed
-	 */
-	@Test
-	public void testSetNullIdEmployee() {
-		Handler idEmployee = null;
-		oneEmployee.setIdemployee(idEmployee.toString());
-
-		Handler result = new DNIHandler(oneEmployee.getIdemployee());
-		assertTrue(dni.compareTo(result)==0);
-	}
 
 	/**
 	 * Test the method getSalary()

@@ -30,8 +30,16 @@ public class InMemoryOfficeManagerDAO implements OfficeManagerDAO{
 	}
 
 	public Employee getEmployee(String dniEmployee) {
-		// TODO Auto-generated method stub
-		return null;
+		Employee employee = null;
+		boolean found = false;
+		int count=0;
+		while(!false && employees.size()>count){
+			if(employees.get(count).getIdemployee().compareTo(dniEmployee)==0){
+				employee = employees.get(count);
+			}
+			count++;
+		}
+		return employee;
 	}
 
 }

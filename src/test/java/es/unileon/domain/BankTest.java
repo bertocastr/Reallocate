@@ -29,48 +29,14 @@ public class BankTest {
 		salary = 5000;
 
 		bank = new Bank("0000");
-
-		dni = new DNIHandler("71463395A");
-		anotherDNI = new DNIHandler("36167364W");
-
-		EncinaId = new OfficeHandler(1234);
-		LeonId = new OfficeHandler(9876);
-		CalleId = new OfficeHandler(4560);
-
-		Encina = new Office("Encina", "Paseo San Antonio", 987400001, 24401,
-				"1234");
-		Leon = new Office("Leon", "Plaza Espolon", 987402051, 24007, "9876");
-
-		Juan = new Employee("name", "surname", "address", salary, Encina.getIdOffice(), "71463395A");
-		Pepe = new Employee("name2", "surname2", "address2", salary, Leon.getIdOffice(),
-				"36167364W");
-
-		Encina.add(Juan);
-
-		Leon.add(Pepe);
-
-		bank.addOffice(Encina);
-		bank.addOffice(Leon);
 	}
 
 	@Test
-	public void testAddOffice() {
-		assertEquals(2, bank.getListOfOffice().size());
+	public void testGetBank() {
+		assertEquals("0000", bank.getIdBank());
 		Office newOffice = new Office("Plaza", "Calle larga", 987541028, 24007, "4560");
-		bank.addOffice(newOffice);
-		assertEquals(3, bank.getListOfOffice().size());
+		bank.setIdBank("0123");
+		assertEquals("0123", bank.getIdBank());
 	}
-
-	@Test
-	public void testFoundOffice() {
-		assertTrue(bank.seekOffice(EncinaId));
-	}
-	
-	@Test
-	public void testNotFoundOffice(){
-		assertFalse(bank.seekOffice(dni));
-	}
-	
-	
 
 }
