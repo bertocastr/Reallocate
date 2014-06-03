@@ -13,5 +13,7 @@ public interface OfficeManagerDAO {
     public List<Employee> getAllEmployees();
     
     public List<Office> getOffices();
+    
+    public Employee getEmployee(String dniEmployee);
 
 }

@@ -53,4 +53,8 @@ public class JPAOfficeManagerDAOTest {
 		assertEquals(offices.size(), 2, 0);	
 	}
 
+	@Test
+	public void testGetEmployee(){
+		assertTrue(officeManagerDao.getEmployee("71517234E").getName().compareTo("Alberto")==0);
+	}
 }

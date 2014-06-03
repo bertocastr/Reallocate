@@ -40,8 +40,12 @@ public class JPAOfficeManagerDAO implements OfficeManagerDAO {
 	@Transactional(readOnly = true)
 	@SuppressWarnings("unchecked")
 	public List<Office> getOffices() {
-		// TODO Auto-generated method stub
 		return em.createQuery("select o from Office o order by o.idOffice").getResultList();
+	}
+
+	@Transactional(readOnly = true)
+	public Employee getEmployee(String dniEmployee) {
+		return (Employee) em.createQuery("select e from Employee e where e.idemployee='"+dniEmployee+"'").getResultList().get(0);
 	}
 
 }

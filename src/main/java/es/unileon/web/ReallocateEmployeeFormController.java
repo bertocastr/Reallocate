@@ -45,10 +45,9 @@ public class ReallocateEmployeeFormController {
         
         Handler idOfficeHandler = new OfficeHandler(idOffice);
         Handler dniEmployeeHandler = new DNIHandler(dniEmployee);
-        
         logger.info("Change "+dniEmployee+" to the office " + idOffice);
         
-        officeOperations.reallocate(dniEmployeeHandler, idOfficeHandler);
+        officeOperations.reallocate(dniEmployeeHandler.toString(), idOfficeHandler.toString());
         
         return "redirect:/hello.htm";
     }

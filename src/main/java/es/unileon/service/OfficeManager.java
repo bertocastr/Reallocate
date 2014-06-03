@@ -9,7 +9,7 @@ import es.unileon.handler.Handler;
 
 public interface OfficeManager extends Serializable {
 
-    public void reallocate(Handler dniEmployee, Handler idNewOffice);
+    public void reallocate(String employee, String idNewOffice);
     
     public List<Employee> getAllEmployees();
     
