@@ -33,6 +33,9 @@ public class ModifyOfficeManager implements OfficeManager {
 		return officeManagerDAO.getAllEmployees();
 	}
 
+	/**
+	 * @return the list of the offices
+	 */
 	public List<Office> getOffices() {
 		return officeManagerDAO.getOffices();
 	}

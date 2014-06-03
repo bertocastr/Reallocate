@@ -26,14 +26,27 @@ public class Bank {
 		
 	}
 	
+	/**
+	 * Constructor of the bank
+	 * @param idBank identifier of the bank
+	 */
 	public Bank(String idBank){
 		this.idBank = idBank;
 	}
 	
+	/**
+	 * 
+	 * @return the identifier of the bank
+	 */
 	public String getIdBank() {
 		return idBank;
 	}
 
+	/**
+	 * Change the identifier of the bank
+	 * 
+	 * @param idBank
+	 */
 	public void setIdBank(String idBank) {
 		this.idBank = idBank;
 	}

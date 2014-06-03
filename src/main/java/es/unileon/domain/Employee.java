@@ -90,10 +90,21 @@ public class Employee {
 		this(name, surname, address, salary, null, idEmployee);
 	}
 
+	/**
+	 * Get the identifier(NIF) of the employee
+	 * 
+	 * @return the employee's identifier
+	 */
 	public String getIdemployee() {
 		return idemployee;
 	}
 
+	/**
+	 * change the identifier(NIF) of the employee
+	 * 
+	 * @param name
+	 *            the new identifier(NIF)
+	 */
 	public void setIdemployee(String idemployee) {
 		this.idemployee = idemployee;
 	}
@@ -209,10 +220,6 @@ public class Employee {
 	public boolean isAdmin() {
 		return false;
 	}
-	
-	/**
-	 * Get all the employees of the office.
-	 */
-	
+
 
 }
